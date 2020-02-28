@@ -81,6 +81,13 @@ const Query = new GraphQLObjectType({
             type: new GraphQLList(DirectorType),
             resolve: () => directors,
         },
+        directorMovies: {
+            type: new GraphQLList(MovieType),
+            args: { directorId: { type: GraphQLID } },
+            resolve: (parent, args) => {
+                return movies.filter(movie => movie.directorId === args.directorId);
+            }
+        }
     },
 });
 
