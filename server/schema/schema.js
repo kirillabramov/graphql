@@ -11,7 +11,7 @@ const {
 
 const movies = [
     { id: '1', name: 'Plup', genre: 'Crime', directorId: '1', },
-    { id: '11', name: 'The Hateful Eight', genre: 'Crime', directorId: '1', },
+    { id: '231', name: 'The Hateful Eight', genre: 'Crime', directorId: '1', },
     { id: '12', name: 'Inglourious Bastards', genre: 'Crime', directorId: '1', },
     { id: '13', name: 'Quentin Film Test', genre: 'Crime', directorId: '1', },
     { id: '2', name: '1984', genre: 'Sci-Fi', directorId: '2', },
@@ -51,9 +51,7 @@ const MovieType = new GraphQLObjectType({
         directorId: { type: GraphQLString },
         director: {
             type: DirectorType,
-            resolve: (parent, args) => {
-                return directors.find(director => director.id === parent.id);
-            },
+            resolve: (parent, args) => directors.find(director => director.id === parent.directorId),
         },
     }),
 });
